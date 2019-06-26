@@ -26,3 +26,12 @@
 9. 可视化线程  mpViewer = new Viewer(this, mpFrameDrawer,mpMapDrawer,mpTracker,strSettingsFile);  
 10. 跟踪、局部建图、闭环检测线程之间传递指针……ln180-187  
  
+### TrackRGBD……ln252  在主函数的6处被调用
+1. 检测模式——仅跟踪 还是 跟踪+建图……ln262-280  
+2. 检查跟踪tracking线程重启  mpTracker->Reset();//线程重置  
+3. RGBD相机跟踪  cv::Mat Tcw = mpTracker->GrabImageRGBD(im,depthmap,timestamp);//得到相机位姿  
+4. 返回相机位姿  return Tcw;  
+
+
+## Tracking.cc
+### 构造函数Tracking……ln126   在System构造函数的6处被调用
